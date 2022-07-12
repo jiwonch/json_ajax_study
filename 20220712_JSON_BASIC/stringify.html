@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        // 성립되지 않음
+        // const obj = { name: "John", age:function(){return 30;}, city:"New York"};
+        // const myJSON = JSON.stringify(obj);
+        // document.getElementById("demo").innerHTML = myJSON;
+
+        const obj = { name:"John", age:function(){return 30;}, city:"New York"};
+        obj.age = obj.age.toString(); //age를 문자형으로 변환
+        const myJSON = JSON.stringify(obj);
+        document.getElementById("demo").innerHTML = myJSON;
+    </script>
+</body>
+</html>

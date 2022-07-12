@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+
+    <script>
+        var myObj, x;
+
+        myObj = {
+            "name": "John",
+            "age": 30,
+            "cars": {
+                "car1": "Ford",
+                "car2": "BMW",
+                "car3": "Fiat"
+            }
+        }
+
+        myObj.cars.car2 = "Mercedes";
+        //or myObj.cars["car2"] = "Mercedes";
+
+        x = myObj.cars.car2;
+        //or x = myObj.cars["car2"];
+
+        document.getElementById("demo").innerHTML = x;
+    </script>
+</body>
+
+</html>

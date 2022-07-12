@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+
+    <script>
+        var myObj, x;
+        myObj = {"name":"John", "age":30, "car":null};
+        x = myObj.name;
+        document.getElementById("demo").innerHTML = x;
+
+        var myOb, y;
+        myOb = {"name":"John", "age":30, "car":null};
+        y = myOb["name"];
+        document.getElementById("demo1").innerHTML = y;
+    </script>
+</body>
+</html>
