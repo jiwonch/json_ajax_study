@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Create Object form JSON String</h2>
+    <p id="demo"></p>
+
+    <script>
+        let text = '{"class609":[' + 
+        '{"seong":"강", "name":"동우"},' +
+        '{"seong":"강", "name":"연재"},' +
+        '{"seong":"강", "name":"지수"},' +
+        '{"seong":"김", "name":"경민"},' +
+        '{"seong":"김", "name":"명래"}]}';
+
+        const obj = JSON.parse(text);
+        document.getElementById("demo").innerHTML =
+        obj.class609[2].seong + " " + obj.class609[2].name;
+    </script>
+</body>
+</html>

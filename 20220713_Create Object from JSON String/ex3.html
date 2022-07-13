@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Create Object from JSON String</h2>
+    <p id="demo"></p>
+
+    <script>
+        let text = '{"class609":[' +
+            '{"id":1,"Name":"강동우","age":"21","email":"mcapehorn1@admin.ch","gender":"Male"},' +
+            '{"id":2,"Name":"강연재","age":"22","email":"hmactrusty0@sitemeter.co","gender":"Male"},' +
+            '{"id":3,"Name":"강지수","age":"23","email":"shune4@about.com","gender":"Female"},' +
+            '{"id":4,"Name":"김경민","age":"24","email":"mcapehorn1@admin.ch","gender":"Male"},' +
+            '{"id":5,"Name":"김명래","age":"25","email":"shune4@about.com","gender":"Male"}]}';
+
+        const obj = JSON.parse(text);
+        document.getElementById("demo").innerHTML = 
+        obj.class609[1].id + " " + obj.class609[1].Name + " " +obj.class609[1].age + " " + obj.class609[1].email+ " " +
+        obj.class609[1].gender;
+    </script>
+</body>
+
+</html>
