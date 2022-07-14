@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APT TEST</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "유니티", size: 50 },
+            headers: { Authorization: "KakaoAK 9b457f655c7841e82fec1c92bda0e61a" }
+        })
+            .done(function (msg) {
+                console.log(msg);
+                console.log(msg.documents[0].title);
+                console.log(msg.documents[0].thumbnail);
+                $(".title").append("<strong>" + msg.documents[0].title + "</strong>");
+                $(".title").append("&nbsp;&nbsp;<span> - " + msg.documents[0].authors + "</span>");
+                $(".thum").append("<img src='" + msg.documents[0].thumbnail + "'/>");
+                $(".price").append("<span>" + msg.documents[0].price + "원" + "</span>");
+                $(".content").append("<span>" + msg.documents[0].contents + "</span>");
+            });
+
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "자바스크립트", size: 50 },
+            headers: { Authorization: "KakaoAK 9b457f655c7841e82fec1c92bda0e61a" }
+        })
+            .done(function (msg) {
+                console.log(msg);
+                console.log(msg.documents[0].title);
+                console.log(msg.documents[0].thumbnail);
+                $(".title2").append("<strong>" + msg.documents[0].title + "</strong>");
+                $(".title2").append("&nbsp;&nbsp;<span> - " + msg.documents[0].authors + "</span>");
+                $(".thum2").append("<img src='" + msg.documents[0].thumbnail + "'/>");
+                $(".price2").append("<span>" + msg.documents[0].price + "원" + "</span>");
+                $(".content2").append("<span>" + msg.documents[0].contents + "</span>");
+            });
+    </script>
+</head>
+
+<body>
+    <h1>도서 API</h1>
+    <p class="thum"></p>
+    <p class="title"></p>
+    <p class="price"></p>
+    <p class="content"></p>
+    <p class="thum2"></p>
+    <p class="title2"></p>
+    <p class="price2"></p>
+    <p class="content2"></p>
+</body>
+
+</html>
