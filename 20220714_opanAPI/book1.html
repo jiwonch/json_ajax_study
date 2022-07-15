@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Practice</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+
+    <style>
+        .box{
+            width: 200px;
+            height: auto;
+            float: left;
+            background-color: gold;
+            text-align: center;
+        }
+
+        .box p{
+             font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <h1>도서 API</h1>
+    <div class="box"></div>
+
+
+    <script>
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "문학"},
+            headers: { Authorization: "KakaoAK 9b457f655c7841e82fec1c92bda0e61a" }
+        })
+            .done(function (msg){
+                $(".box").append("<img src ='" + msg.documents[0].thumbnail + "'/>");
+                $(".box").append("<h3>" + msg.documents[0].title + "</h3>");
+                $(".box").append("<h6>" + msg.documents[0].authors[0] + "</h6>");
+
+                var str = msg.documents[0].contents;
+                var st2 = str.substring(0, 60);
+
+                $(".box").append("<p>" + st2 + "</p>");
+            });
+    </script>
+</body>
+</html>

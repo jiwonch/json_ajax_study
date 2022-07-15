@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Practice</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 250px;
+            height: 400px;
+            float: left;
+            text-align: center;
+            margin: 20px;
+            padding: 15px 30px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 4px 4px 4px #eee;
+        }
+
+        .box p {
+            font-size: 11px;
+            color: #666;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>도서 API</h1>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+
+    <script>
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "어른" },
+            headers: { Authorization: "KakaoAK 9b457f655c7841e82fec1c92bda0e61a" }
+        })
+            .done(function (msg) {
+
+                var divs = document.getElementsByTagName('div');
+
+                for (var i = 0; i < divs.length; i++) {
+                    $(".box").eq(i).append("<img src ='" + msg.documents[i].thumbnail + "'/>");
+                    $(".box").eq(i).append("<h3>" + msg.documents[i].title + "</h3>");
+                    $(".box").eq(i).append("<h6>" + msg.documents[i].authors + "</h6>");
+
+                    var str = msg.documents[i].contents;
+                    var st2 = str.substring(0, 60);
+
+                    $(".box").eq(i).append("<p>" + st2 + "</p>");
+                    $(".box").eq(i).append("<button>" + "click" + "</button>");
+                }
+            });
+    </script>
+</body>
+
+</html>

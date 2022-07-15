@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open API Practice</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "알고리즘", size: 20 },
+            headers: { Authorization: "KakaoAK 9b457f655c7841e82fec1c92bda0e61a" }
+        })
+            .done(function (msg) {
+                console.log(msg);
+                console.log(msg.documents[0].title);
+                console.log(msg.documents[0].thumbnail);
+                $(".title").append("<strong>" + msg.documents[0].title + "</strong>");
+                $(".title").append("&nbsp;<span> - " + msg.documents[0].authors + "</span>");
+                $(".thum").append("<img src='" + msg.documents[0].thumbnail + "'/>");
+                $(".price").append("<span>" + "가격: " + msg.documents[0].price + "원" + "</span>");
+                $(".content").append("<span>" + msg.documents[0].contents + "</span>");
+            });
+    </script>
+
+    <style>
+        #bookBox{
+            margin-top: 10px;
+            width: 200px;
+            height: auto;
+            padding: 10px;
+            border: 5px solid lavender;
+        }
+
+        .thum{
+            width: 120px;
+            height: auto;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>도서 API</h1>
+    <div id="bookBox">
+        <p class="thum"></p>
+        <p class="title"></p>
+        <p class="price"></p>
+        <p class="content"></p>
+    </div>
+</body>
+
+</html>
